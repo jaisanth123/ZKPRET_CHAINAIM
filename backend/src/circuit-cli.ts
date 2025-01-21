@@ -10,7 +10,7 @@ export function verifyProcess(input: UInt8[]) {
 	states[0][0] = Bool(true);
 	for (let i = 1; i < 9; i++) {
 		states[0][i] = Bool(false);
-	}
+	 }
 	
 	for (let i = 0; i < num_bytes; i++) {
 		const eq0 = input[i].value.equals(97);
