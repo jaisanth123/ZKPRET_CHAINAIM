@@ -45,39 +45,94 @@ const BPMN = () => {
     };
 
     return (
-        <div className="bpmn">
-            <div>
-                <h1>BPMN Process Prover</h1>
-                <h3>Upload your BPMN Process representations</h3>
-            </div>
-            <form className="form">
-                <div>
-                    <label>Expected Sequence</label>
-                    <input
-                        type="file"
-                        onChange={(e) => handleFileChange(e, 'expected')}
-                    />
+        <div className="container">
+            <header className="header">
+                <div className="logo-container">
+                    <h1 className="logo">CHAINAIM</h1>
+                    <div className="auth-buttons">
+                        <a href="#" className="link-button">LOGIN</a>
+                        <a href="#" className="link-button">SSO SIGN-IN</a>
+                    </div>
                 </div>
-                <div>
-                    <label>Actual Sequence</label>
-                    <input
-                        type="file"
-                        onChange={(e) => handleFileChange(e, 'actual')}
-                    />
-                </div>
-                {expectedFile && actualFile && (
-                    <button
-                        type="button"
-                        onClick={handleProcessFiles}
+                <button className="wallet-button">CONNECT WALLET</button>
+            </header>
+
+            <main className="main-content">
+                <h2 className="title">BUSINESS PROCESS PROVER</h2>
+
+                <p className="step">
+                    STEP 1: CREATE BUSINESS PROCESS MODELS USING{' '}
+                    <a
+                        href="https://bpmn.io"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bpmn-link"
                     >
+                        BPMN.IO
+                    </a>
+                </p>
+                <p className="step">STEP 2: UPLOAD OR SELECT EXPECTED & ACTUAL MODELS</p>
+
+                <div className="process-container">
+                    <div className="process-section">
+                        <h3 className="section-title">BUSINESS PROCESS - EXPECTED</h3>
+                        <div className="button-container">
+                            <input
+                                type="file"
+                                id="upload-expected"
+                                className="file-input"
+                                onChange={(e) => handleFileChange(e, 'expected')}
+                            />
+                        </div>
+                        {expectedFile && (
+                            <p className="file-name">Uploaded: {expectedFile.name}</p>
+                        )}
+                    </div>
+
+                    <div className="divider"></div>
+
+                    <div className="process-section">
+                        <h3 className="section-title">BUSINESS PROCESS - ACTUAL</h3>
+                        <div className="button-container">
+                            <input
+                                type="file"
+                                id="upload-actual"
+                                className="file-input"
+                                onChange={(e) => handleFileChange(e, 'actual')}
+                            />
+                        </div>
+                        {actualFile && (
+                            <p className="file-name">Uploaded: {actualFile.name}</p>
+                        )}
+                    </div>
+                </div>
+
+                {expectedFile && actualFile && (
+                    <button className="action-button" onClick={handleProcessFiles}>
                         Process Both Files
                     </button>
                 )}
-                <div>
-                    <h3>Verification Result:</h3>
-                    <pre>{booleanResult !== null ? booleanResult.toString() : 'No result yet'}</pre>
+
+                <div className="output">
+            
+                    <h1>{booleanResult !== null ? booleanResult.toString() : 'No result yet'}</h1>
                 </div>
-            </form>
+            </main>
+
+            <footer className="footer">
+                <p>STEP 3: GENERATE PROOF AND VERIFY</p>
+                <div className="actions">
+                    <button className="action-button" onClick={() => alert("Proof generated")}>
+                        GENERATE PROOF
+                    </button>
+                    <button className="action-button" onClick={() => alert("Verification completed")}>
+                        VERIFY
+                    </button>
+                </div>
+                <p className="evaluation">
+                    EXPECTED VS ACTUAL EVALUATION IS: <b>{booleanResult !== null ? booleanResult.toString() : 'PASS/FAIL'}</b>
+                </p>
+            </footer>
         </div>
     );
 };
