@@ -1,7 +1,7 @@
 import { Bool, Field, UInt8 } from 'o1js';
 
 
-// Command used: 'a(cb|bc)d(ef|f)g' '--functionName' 'verifyProcess' '--filePath' 'src/circuit-cli.ts'
+// Command used: 'a(bc|cb)d(f|ef)g' '--functionName' 'verifyProcess' '--filePath' 'src/circuit-cli.ts'
 export function verifyProcess(input: UInt8[]) {
 	const num_bytes = input.length;
 	let states: Bool[][] = Array.from({ length: num_bytes + 1 }, () => []);
@@ -10,7 +10,7 @@ export function verifyProcess(input: UInt8[]) {
 	states[0][0] = Bool(true);
 	for (let i = 1; i < 9; i++) {
 		states[0][i] = Bool(false);
-	 }
+	}
 	
 	for (let i = 0; i < num_bytes; i++) {
 		const eq0 = input[i].value.equals(97);

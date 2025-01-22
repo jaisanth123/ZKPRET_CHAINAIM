@@ -1,5 +1,5 @@
 import { Bool } from 'o1js';
-// Command used: 'a(cb|bc)d(ef|f)g' '--functionName' 'verifyProcess' '--filePath' 'src/circuit-cli.ts'
+// Command used: 'a(bc|cb)d(f|ef)g' '--functionName' 'verifyProcess' '--filePath' 'src/circuit-cli.ts'
 export function verifyProcess(input) {
     const num_bytes = input.length;
     let states = Array.from({ length: num_bytes + 1 }, () => []);
